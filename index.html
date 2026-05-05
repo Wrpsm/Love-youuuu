@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>ถึงเค้ก 💖</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: "Kanit", sans-serif;
+  text-align: center;
+  background: linear-gradient(135deg, #ffd1dc, #ffe6eb);
+  overflow: hidden;
+}
+
+.box {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  max-width: 420px;
+  margin: 100px auto;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  animation: fade 0.5s ease;
+}
+
+h2 { color: #ff4d6d; }
+p { font-size: 16px; }
+
+button {
+  margin: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  background: #ff6b81;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+@keyframes fade {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* หัวใจลอย */
+.heart {
+  position: absolute;
+  color: #ff6b81;
+  animation: float 6s linear infinite;
+}
+
+@keyframes float {
+  from { transform: translateY(100vh); opacity: 1; }
+  to { transform: translateY(-10vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="box" id="content">
+  <h2>เค้ก…</h2>
+  <p>เค้าขอเวลาแป๊บนึงได้ไหม 🥺</p>
+  <button onclick="next()">โอเค จะฟัง</button>
+</div>
+
+<script>
+let step = 0;
+
+function next() {
+  step++;
+  let c = document.getElementById("content");
+
+  if(step === 1){
+    c.innerHTML = `
+    <h2>เค้าขอโทษนะ</h2>
+    <p>ที่วันนั้นเค้าเดินหนี ไม่ยอมคุยกับเค้ก</p>
+    <button onclick="next()">ต่อ</button>`;
+  }
+
+  else if(step === 2){
+    c.innerHTML = `
+    <h2>จริง ๆ แล้ว</h2>
+    <p>เค้าไม่ได้ไม่แคร์เลยนะ เค้าแค่ไม่รู้จะพูดยังไง</p>
+    <button onclick="next()">ฟังต่อ</button>`;
+  }
+
+  else if(step === 3){
+    c.innerHTML = `
+    <h2>เค้าคิดได้แล้ว</h2>
+    <p>ว่าสิ่งที่เค้าทำมันทำให้เค้กเสียใจมาก</p>
+    <button onclick="next()">แล้วตอนนี้ล่ะ?</button>`;
+  }
+
+  else if(step === 4){
+    c.innerHTML = `
+    <h2>เค้าขอโทษจริง ๆ</h2>
+    <p>ขอโทษที่ทำตัวไม่ดี และเลือกหนีแทนที่จะคุย</p>
+    <button onclick="next()">อีกนิดนะ</button>`;
+  }
+
+  else if(step === 5){
+    c.innerHTML = `
+    <h2>เค้กสำคัญมากนะ</h2>
+    <p>มากจนเค้าไม่อยากเสียเค้กไปเลยจริง ๆ</p>
+    <button onclick="final()">อ่านต่อ</button>`;
+  }
+}
+
+function final(){
+  document.getElementById("content").innerHTML = `
+  <h2>ให้โอกาสเค้าอีกครั้งได้ไหม 💖</h2>
+  <p>ครั้งหน้าถ้ามีอะไร เค้าจะไม่เดินหนีแล้ว จะอยู่คุยกับเค้กให้จบ</p>
+  <button onclick="love()">ให้อภัยเค้า 💗</button>
+  <button onclick="run(this)">ยังงอนอยู่ 😤</button>`;
+}
+
+function love(){
+  document.getElementById("content").innerHTML = `
+  <h2></p>`;
+}
+
+function run(btn){
+  btn.style.position = "absolute";
+  btn.style.top = Math.random()*80 + "%";
+  btn.style.left = Math.random()*80 + "%";
+}
+
+/* หัวใจลอย */
+setInterval(() => {
+  let heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "💖";
+  heart.style.left = Math.random()*100 + "vw";
+  heart.style.fontSize = (Math.random()*20 + 12) + "px";
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 6000);
+}, 400);
+</script>
+
+</body>
+</html>
